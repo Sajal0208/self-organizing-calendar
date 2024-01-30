@@ -12,14 +12,7 @@ const Calendar = () => {
       setLayout(layoutEvents(events));
   }, [events]);
 
-  const addEvent = () => {
-    const newEvent = {
-      id: Math.random(),
-      title: 'New Event',
-      description: 'New Event Description',
-      start: 20,
-      end: 40,
-    };
+  const addEvent = (newEvent: CalendarEvent) => {
     const newEvents = [...events, newEvent];
     setEvents(newEvents);
     setLayout(layoutEvents([...events, newEvent]));
@@ -28,7 +21,7 @@ const Calendar = () => {
   return (
     <div className='flex flex-col justify-start items-start p-10'>
       <div className='flex flex-row justify-start w-full'>
-        <AddEvent />
+        <AddEvent addEvent={addEvent} />
       </div>
       <div className='p-4 shadow-lg flex flex-row justify-center items-center rounded'>
         <TimeColumn />
