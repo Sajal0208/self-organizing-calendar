@@ -21,7 +21,7 @@ const generateTimes = () => {
 const TimeColumn: React.FC = () => {
     const times = generateTimes();
     return (
-        <div className="flex flex-col m-0 p-0 justify-between items-end mr-4 h-[740px]">
+        <div className="flex flex-col m-0 p-0 justify-between items-end mr-4 h-[720px]">
             {times.map((time, index) => {
                 if (index % 2 === 0) {
                     return (

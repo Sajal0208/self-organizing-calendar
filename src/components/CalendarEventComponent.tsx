@@ -14,18 +14,20 @@ const CalendarEventComponent = ({
   height: number;
   index: number;
 }) => {
-  const { start, end } = item
-  const eventTimingWidth = 620 / widthDividedInto
-  const eventTimingLeft = index * (620 / widthDividedInto)
+  const eventTimingWidth = 600 / widthDividedInto
+  const eventTimingLeft = index * (600 / widthDividedInto)
+  const { title, description } = item
 
+  
   return (
-    <div style = {{
+    <div style={{
       top: `${top}px`,
-      left: `${widthDividedInto === 1 ? "0" : eventTimingLeft}px`,
+      left: `${widthDividedInto === 1 ? "10" : eventTimingLeft + 10}px`,
       height: `${height}px`,
       width: `${eventTimingWidth}px`,
-    }} className={`absolute border-l-4  border-black bg-white`}>
-      Hello
+    }} className={`absolute border-l-4  border-black bg-white p-1 overflow-hidden`}>
+      <p className = "text-sm text-blue-400">{title}</p>
+      <p className='text-xs  text-gray-400'>{description}</p>
     </div>
   )
 }

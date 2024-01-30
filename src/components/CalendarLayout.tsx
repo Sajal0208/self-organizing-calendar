@@ -1,18 +1,18 @@
-import React from 'react'
-import { CalendarEvent, fakeTimings, layoutEvents } from '../helper/layoutEvents';
+import { CalendarEvent } from '../helper/layoutEvents';
 import { useState, useEffect } from 'react';
 import CalendarEventComponent from './CalendarEventComponent';
 
-const CalendarLayout = () => {
-    const [events, setEvents] = useState<CalendarEvent[]>(fakeTimings);
-    const [layout, setLayout] = useState<CalendarEvent[][]>([]);
+const CalendarLayout = ({events, layout} : {
+    events: CalendarEvent[],
+    layout: CalendarEvent[][]
+}) => {
 
     useEffect(() => {
-        setLayout(layoutEvents(events));
-    }, [events]);
 
+    }, [layout])
+    
     return (
-      <div className='relative bg-gray-300 w-[620px] px-2.5 h-[720px]'>
+      <div className='relative bg-gray-300 w-[620px] px-2.5 h-[720px] overflow-hidden'>
         {layout.map((item: CalendarEvent[]) => {
             if(item.length === 1) {
                 const {start, end} = item[0]
