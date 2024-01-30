@@ -1,6 +1,7 @@
 import { Button } from "./Button"
 import {
     Dialog,
+    DialogClose,
     DialogContent,
     DialogDescription,
     DialogFooter,
@@ -60,7 +61,7 @@ export function AddEventButton({ addEvent }: {
         }
 
         addEvent(event)
-        return;
+        return
     }
 
     return (
@@ -99,7 +100,9 @@ export function AddEventButton({ addEvent }: {
                     </div>
                 </div>
                 <DialogFooter>
-                    <Button onClick={onClick}>Add Event</Button>
+                    <DialogClose asChild>
+                        <Button type = "button" onClick={onClick}>Add Event</Button>
+                    </DialogClose>
                 </DialogFooter>
             </DialogContent>
         </Dialog>
