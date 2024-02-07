@@ -44,14 +44,14 @@ export function AddEventButton({ addEvent }: {
     }
 
     const onClick = () => {
-        if(startTime === '' || endTime === '') {
+        if (startTime === '' || endTime === '') {
             toast('Please enter a start and end time')
             return
         }
         const parsedStartTime = parseTimeForData(startTime)
         const parsedEndTime = parseTimeForData(endTime)
         const isValid = validateData({ title, description, start: parsedStartTime, end: parsedEndTime })
-        if(!isValid) return
+        if (!isValid) return
         const event: CalendarEvent = {
             id: uuidv4(),
             title,
@@ -59,7 +59,10 @@ export function AddEventButton({ addEvent }: {
             start: parsedStartTime,
             end: parsedEndTime,
         }
-
+        setTitle('')
+        setDescription('')
+        setStartTime('')
+        setEndTime('')
         addEvent(event)
         return
     }
@@ -101,7 +104,7 @@ export function AddEventButton({ addEvent }: {
                 </div>
                 <DialogFooter>
                     <DialogClose asChild>
-                        <Button type = "button" onClick={onClick}>Add Event</Button>
+                        <Button type="button" onClick={onClick}>Add Event</Button>
                     </DialogClose>
                 </DialogFooter>
             </DialogContent>
@@ -110,12 +113,14 @@ export function AddEventButton({ addEvent }: {
 }
 
 
-const AddEvent = ({ addEvent }: {
-    addEvent: (newEvent: CalendarEvent) => void
+const AddEvent = ({ addEvent, resetInput }: {
+    addEvent: (newEvent: CalendarEvent) => void;
+    resetInput: () => void;
 }) => {
     return (
-        <div className={'bg-gray-300 rounded-lg p-4 mb-2 w-full'}>
+        <div className={'bg-gray-300 rounded-lg p-4 mb-2 w-full flex flex-row justify-between'}>
             <AddEventButton addEvent={addEvent} />
+            <Button onClick={resetInput}>Reset Input</Button>
         </div>
     )
 }
