@@ -1,7 +1,5 @@
 
-# Zenskar Calendar
-
-Create a single-day calendar layout in React that visually organizes a set of events without overlap, akin to the interfaces found in Outlook, Calendar.app, and Google Calendar. Your layout must adhere to specific constraints to ensure a clean and functional user experience.
+# Calendar
 
 ## Run Locally
 
